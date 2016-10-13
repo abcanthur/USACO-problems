@@ -6,7 +6,7 @@ TASK: ride
 import java.io.*;
         import java.util.*;
 
-class test {
+class ride {
     public static void main (String [] args) throws IOException {
         // Use BufferedReader rather than RandomAccessFile; it's much faster
         BufferedReader f = new BufferedReader(new FileReader("ride.in"));
@@ -18,10 +18,23 @@ class test {
         // Get line, break into tokens
         int comet = 1;
         int group = 1;
-        for(int i = 0; i < 6; i++){
-            comet = comet * Integer.parseInt(st1.nextToken());
-            group = group * Integer.parseInt(st2.nextToken());
+        String cString = st1.nextToken();
+        String gString = st2.nextToken();
+        //out.println(cString + " " + gString);
+
+        for(int x = 0; x < cString.length(); x++){
+            int c = (int) (cString.charAt(x));
+            c = c - 64;
+            //out.println(c);
+            comet = comet * c;
         }
+        for(int y = 0; y < gString.length(); y++){
+            int g = (int) (gString.charAt(y));
+            g = g - 64;
+            //out.println(g);
+            group = group * g;
+        }
+        //out.println(comet + " " + group);
         if( (comet % 47) == (group % 47)) {
             out.println("GO");
         } else {
