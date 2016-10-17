@@ -21,22 +21,19 @@ class gift1 {
         // input file name goes above
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("gift1.out")));
         // Use StringTokenizer vs. readLine/split -- lots faster
-        StringTokenizer st = new StringTokenizer(f.readLine());
-        int np = Integer.parseInt(st.nextToken());
+        int np = Integer.parseInt(f.readLine());
         int[] dollars = new int[np];
         String[] names = new String[np];
 
         for (int i = 0; i < np; i++) {
-            StringTokenizer st2 = new StringTokenizer(f.readLine());
-            names[0] = st2.nextToken();
+            names[0] = f.readLine();
         }
 
         for (int i = 0; i < np; i++) {
-            StringTokenizer st2 = new StringTokenizer(f.readLine());
-            String giver = st2.nextToken();
-            st2 = new StringTokenizer(f.readLine());
-            int totalGift = Integer.parseInt(st2.nextToken());
-            int numRecipients = Integer.parseInt(st2.nextToken());
+            String giver = f.readLine();
+            StringTokenizer st = new StringTokenizer(f.readLine());
+            int totalGift = Integer.parseInt(st.nextToken());
+            int numRecipients = Integer.parseInt(st.nextToken());
             int eachGift = totalGift / numRecipients;
 
 
@@ -49,8 +46,7 @@ class gift1 {
             }
             dollars[giverIndex] = dollars[giverIndex] + totalGift;
             for (int j = 0; j < numRecipients; j++) {
-                st2 = new StringTokenizer(f.readLine());
-                String recipient = st2.nextToken();
+                String recipient = f.readLine();
                 int recipientIndex = 0;
                 for (int k = 0; k < names.length; k++) {
                     if (names[k].equals(recipient)) {
