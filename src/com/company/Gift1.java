@@ -1,10 +1,3 @@
-package com.company;
-
-/**
- * Created by petermartinez on 10/12/16.
- */
-
-
 
 /*
 ID: peterjo1
@@ -24,17 +17,26 @@ class gift1 {
         int np = Integer.parseInt(f.readLine());
         int[] dollars = new int[np];
         String[] names = new String[np];
+        int totalGift;
+        int numRecipients;
+        int eachGift;
+
 
         for (int i = 0; i < np; i++) {
-            names[0] = f.readLine();
+            names[i] = f.readLine();
         }
 
         for (int i = 0; i < np; i++) {
             String giver = f.readLine();
             StringTokenizer st = new StringTokenizer(f.readLine());
-            int totalGift = Integer.parseInt(st.nextToken());
-            int numRecipients = Integer.parseInt(st.nextToken());
-            int eachGift = totalGift / numRecipients;
+            totalGift = Integer.parseInt(st.nextToken());
+            numRecipients = Integer.parseInt(st.nextToken());
+            if(numRecipients > 0) {
+                eachGift = totalGift / numRecipients;
+            } else {
+                eachGift = 0;
+            }
+
 
 
             int giverIndex = i;
@@ -44,7 +46,12 @@ class gift1 {
                     break;
                 }
             }
-            dollars[giverIndex] = dollars[giverIndex] + totalGift;
+
+//            out.println(giver + " had " + dollars[giverIndex]);
+            dollars[giverIndex] = dollars[giverIndex] - totalGift + (totalGift - eachGift * numRecipients);
+//            out.println(giver + " has " + dollars[giverIndex]);
+//            dollars[giverIndex] = dollars[giverIndex] - (eachGift * numRecipients);
+
             for (int j = 0; j < numRecipients; j++) {
                 String recipient = f.readLine();
                 int recipientIndex = 0;
@@ -54,8 +61,9 @@ class gift1 {
                         break;
                     }
                 }
-                dollars[giverIndex] = dollars[giverIndex] - eachGift;
+//                dollars[giverIndex] = dollars[giverIndex] - eachGift;
                 dollars[recipientIndex] = dollars[recipientIndex] + eachGift;
+//                out.println(giver + " gave " + eachGift + " to " + recipient + ", " + giver + " has " + dollars[giverIndex] + ", " + names[recipientIndex] + " has " + dollars[recipientIndex]);
             }
         }
 
