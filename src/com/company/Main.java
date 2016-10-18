@@ -17,7 +17,7 @@ class ride {
         // input file name goes above
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("ride.out")));
         // Use StringTokenizer vs. readLine/split -- lots faster
-        StringTokenizer st1 = new StringTokenizer(f.readLine());
+        StringTokenizer st1 = new StringTokenizer(f.readLine()); //Let's fix these StringTokenizers
         StringTokenizer st2 = new StringTokenizer(f.readLine());
         // Get line, break into tokens
         int comet = 1;
